@@ -8,7 +8,7 @@ using namespace Microsoft::WRL;
 Cube* Cube::GetInstance()
 {
 	static Cube instance;
-	return &instance;
+	return &instance; 
 }
 
 void Cube::Initialize(XMFLOAT3 size, DirectXCommon* dx_)

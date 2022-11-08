@@ -1,12 +1,13 @@
 #include "DirectXCommon.h"
 #include "input.h"
 #include "DirectXTex.h"
-#include "Sphere.h"
 #include "Cube.h"
 #include "object3D.h"
 #include "list"
 #include "memory"
 #include "Texture.h"
+#include "Model.h"
+#include "Object3D.h"
 
 class GameScene
 {
@@ -21,24 +22,14 @@ public:
 	//メンバ変数
 private: 
 	//デバイスとinput
-	DirectXCommon* dxCommon = nullptr;
-	Input* input = nullptr;
+	DirectXCommon* dxCommon_ = nullptr;
+	Input* input_ = nullptr;
 
-	//球体のモデル
-	XMFLOAT3 size1 = { 1.0f,1.0f,1.0f };
-	std::unique_ptr<Sphere> sphere_;
+	//モデル
+	std::unique_ptr<Model> model_;
 
-	//キューブのモデル
-	XMFLOAT3 size2 = { 1.0f,1.0f,1.0f };
-	std::unique_ptr<Cube> cube_;
-
-	//画像
-	size_t textureCount_ = 2;	//テクスチャの数
-	std::vector<Texture> texture_;	//テクスチャ
-
-	//3Dオブジェクト
-	size_t kObjectCount = 2;		//オブジェクトの数
-	std::vector<Object3d> object3ds_;	//オブジェクト
+	//オブジェクト
+	std::unique_ptr<Object3D> object3Ds_;
 
 	//射影変換
 	XMMATRIX matProjection = XMMatrixPerspectiveFovLH(
@@ -49,7 +40,7 @@ private:
 
 	//ビュー変換行列
 	XMMATRIX matView;
-	XMFLOAT3 eye = { 0, 0, -100 };
+	XMFLOAT3 eye = { 0, 10, 30 };
 	XMFLOAT3 target = { 0, 0, 0 };
 	XMFLOAT3 up = { 0, 1, 0 };
 };

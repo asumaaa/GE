@@ -264,6 +264,24 @@ void DirectXCommon::PreDraw()
 	FLOAT clearColor[] = { 0.1f,0.25f,0.5f,0.0f };
 	GetCommandList()->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 	GetCommandList()->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
+
+	// ビューポートの設定
+	CD3DX12_VIEWPORT viewport;
+	viewport.Width = window_width;
+	viewport.Height = window_height;
+	viewport.TopLeftX = 0;
+	viewport.TopLeftY = 0;
+	viewport.MinDepth = 0.0f;
+	viewport.MaxDepth = 1.0f;
+	//ビューポート設定コマンドをコマンドリストに積む
+	GetCommandList()->RSSetViewports(1, &viewport);
+	// シザリング矩形の設定
+	CD3DX12_RECT scissorRect;
+	scissorRect.left = 0;
+	scissorRect.right = scissorRect.left + window_width;
+	scissorRect.top = 0;
+	scissorRect.bottom = scissorRect.top + window_height;
+	GetCommandList()->RSSetScissorRects(1, &scissorRect);
 }
 #pragma endregion 
 #pragma region 描画後処理

@@ -85,6 +85,8 @@ void Model::InitializeVertex(const std::string& filename)
 			line_stream >> texcoord.x;
 			line_stream >> texcoord.y;
 			//V方向反転
+			texcoord.y = 1 - texcoord.y;
+			//V方向反転
 			texcoords.emplace_back(texcoord);
 		}
 		//法線ベクトル

@@ -40,7 +40,7 @@ private:
 
 	//ƒrƒ…[•ÏŠ·s—ñ
 	XMMATRIX matView;
-	XMFLOAT3 eye = { 0, 10, 30 };
+	XMFLOAT3 eye = { -10, 10, 30 };
 	XMFLOAT3 target = { 0, 0, 0 };
 	XMFLOAT3 up = { 0, 1, 0 };
 };

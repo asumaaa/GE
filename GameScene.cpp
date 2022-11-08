@@ -21,7 +21,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input)
 
 	//モデル初期化
 	Model* newModel = new Model();
-	newModel->Initialize(dxCommon_, "fighter", "Resources/tex1.png");
+	newModel->Initialize(dxCommon_, "fighter", "Resources/fighter.png");
 	model_.reset(newModel);
 	//オブジェクト初期化
 	Object3D* newObject = new Object3D();
